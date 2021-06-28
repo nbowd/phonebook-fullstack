@@ -1,0 +1,8 @@
+### All persons
+http://localhost:3001/api/persons
+
+### Valid single person 
+http://localhost:3001/api/persons/1
+
+### Invalid single person 
+http://localhost:3001/api/persons/0
