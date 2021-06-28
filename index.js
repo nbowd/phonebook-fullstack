@@ -98,13 +98,31 @@ app.post('/api/persons', (request, response) => {
   const person = {
     name: body.name,
     number: body.number,
-    date: new Date(),
     id: generateId(),
   }
 
   // If none of the conditions triggered an error, person is added
   persons = persons.concat(person)
   response.json(person)
+})
+
+app.put('/api/persons:id', (request,response) => {
+  const body = request.body
+
+  if(!body.name || !body.number) {
+    return response.status(400).json({
+      error: 'content missing'
+    })
+  }
+  
+  // Modifies the person to be updated by replacing their object with another that has the same pid
+  const updatedPpl = persons.map(person => {
+    if (person.name === body.name) {
+      return {...body, id:person.id}
+    }
+    return person
+  })
+  response.json(updatedPpl)
 })
 
 const PORT = process.env.PORT || 3001
