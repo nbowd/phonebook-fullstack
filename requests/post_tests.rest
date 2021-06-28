@@ -1,7 +1,7 @@
-POST http://localhost:3001/api/persons HTTP/1.1
+POST https://agile-falls-64774.herokuapp.com/api/persons HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "nick",
-  "number": "666"
+  "name": "testing",
+  "number": "12345"
 }
