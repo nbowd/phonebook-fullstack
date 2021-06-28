@@ -106,24 +106,24 @@ app.post('/api/persons', (request, response) => {
   response.json(person)
 })
 
-app.put('/api/persons:id', (request,response) => {
-  const body = request.body
+// app.put('/api/persons:id', (request,response) => {
+//   const body = request.body
 
-  if(!body.name || !body.number) {
-    return response.status(400).json({
-      error: 'content missing'
-    })
-  }
+//   if(!body.name || !body.number) {
+//     return response.status(400).json({
+//       error: 'content missing'
+//     })
+//   }
   
-  // Modifies the person to be updated by replacing their object with another that has the same pid
-  const updatedPpl = persons.map(person => {
-    if (person.name === body.name) {
-      return {...body, id:person.id}
-    }
-    return person
-  })
-  response.json(updatedPpl)
-})
+//   // Modifies the person to be updated by replacing their object with another that has the same pid
+//   const updatedPpl = persons.map(person => {
+//     if (person.name === body.name) {
+//       return {...body, id:person.id}
+//     }
+//     return person
+//   })
+//   response.json(updatedPpl)
+// })
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
