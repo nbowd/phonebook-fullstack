@@ -1,6 +1,9 @@
 ### All persons
 http://localhost:3001/api/persons
 
+### Heroku DB
+https://agile-falls-64774.herokuapp.com/api/persons
+
 ### Valid single person 
 http://localhost:3001/api/persons/1
 
