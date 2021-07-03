@@ -23,14 +23,7 @@ db.once('open', function() {
     number: Number,
     id: Number,
   })
-  // const noteSchema = new mongoose.Schema({
-  //   content: String,
-  //   date: Date,
-  //   important: Boolean,
-  // })
-  
-  const Person = mongoose.model('Person', personSchema)
-
+  // const Person = mongoose.model('Person', personSchema)
   if (!process.argv[3]){
     console.log('Contacts:');
     Person.find({}).then(result => {
