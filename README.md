@@ -1,11 +1,13 @@
-Try the app here: https://agile-falls-64774.herokuapp.com/
+Work in progress Try the app here: https://agile-falls-64774.herokuapp.com/
+
+<<<<<<< HEAD
+Users can add new contacts, create new entries, search for a specific entry, or update an existing contact.
 
 Backend handling for a phonebook CRUD application built with React.js, Express, and Node.js while storing data using MongoDB.
+=======
+Backend for a phonebook CRUD application built with React.js, Axios, Express, and Node.js while following a RESTful architecture.
+>>>>>>> parent of 15c649b... formatting pass
 
-Uses 'morgan' package to for request logging.
-Uses 'mongoose' to manage mongoDB actions.
-Uses 'lint' for static code analysis.
+The backend focuses on the Node.js and Express portion of this application. Express handles the routing for all of the HTTP requests. This app is setup for both local development and heroku production.
 
-The backend focuses on the Node.js, Express, and MongoDB portions of this application. Express handles the routing for HTTP requests. This app is setup for both local development and heroku production environments.
-
-Builds and serves the compiled HTML from the frontend code. 
+On deploy, grabs a build from the frontend and serves the compiled html. Uses 'morgan' package to for request logging.
