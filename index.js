@@ -115,7 +115,7 @@ const errorHandler = (error, request, response, next) => {
   next(error)
 }
 
-// this has to be the last loaded middleware.
+// this has to be the last loaded middleware
 app.use(errorHandler)
 
 const PORT = process.env.PORT || 3001
