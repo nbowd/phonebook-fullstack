@@ -35,7 +35,7 @@ app.get('/api/persons', (request, response) => {
     })
 })
 
-// GET Individual Person
+// GET Individual Person.
 app.get('/api/persons/:id', (request, response, next) => {
   Person
     .findById(request.params.id)
