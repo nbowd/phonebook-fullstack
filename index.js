@@ -5,10 +5,8 @@ const morgan = require('morgan')
 const cors = require('cors')
 const Person = require('./models/person')
 
-
 app.use(cors())
 app.use(express.static('build'))
-
 
 // Configure morgan to log body of POST request
 morgan.token('person', (req) => {
@@ -16,7 +14,6 @@ morgan.token('person', (req) => {
   return null
 })
 
-// json-parser
 app.use(express.json())
 
 app.use(
@@ -25,19 +22,23 @@ app.use(
   ),
 )
 
+// Used to save a copy of persons for /api/info
 let personList = null;
-let tableLength = 0;
 
+// GET All Persons
 app.get('/api/persons', (request, response) => {
-  console.log('get req received')
-  Person.find({}).then(person => {
+  Person
+    .find({})
+    .then(person => {
     personList = person
     response.json(person)
-  })
+    })
 })
 
+// GET Individual Person
 app.get('/api/persons/:id', (request, response, next) => {
-  Person.findById(request.params.id)
+  Person
+    .findById(request.params.id)
     .then(person => {
       if (person) {
         response.json(person)
@@ -48,22 +49,25 @@ app.get('/api/persons/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
+// GET App info: number of entries, current date
 app.get('/api/info', (request, response) => {
   let text = `<div>Phonebook has info for ${personList.length} people</div><br><div>${new Date()}</div>`
   response.send(text)
 })
 
+// DELETE person with specific ID
 app.delete('/api/persons/:id', (request, response, next) => {
-  Person.findByIdAndRemove(request.params.id)
+  Person
+    .findByIdAndRemove(request.params.id)
     .then(result => {
       response.status(204).end()
     })
     .catch(error => next(error))
 })
 
+// POST: Add a new person to the list
 app.post('/api/persons', (request, response) => {
   const body = request.body
-  console.log(body);
   if (body.name === undefined) {
     return response.status(400).json({ error: 'content missing' })
   }
@@ -72,13 +76,16 @@ app.post('/api/persons', (request, response) => {
     name: body.name,
     number: Number(body.number)
   })
-  console.log(person);
-  person.save().then(savedPerson => {
-    response.json(savedPerson)
-  })
-  .catch(error => next(error))
+
+  person
+    .save()
+    .then(savedPerson => {
+    response.json(savedPerson.toJSON())
+    })
+    .catch(error => next(error))
 })
 
+// PUT: Updates the number of an existing entry
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
 
@@ -86,16 +93,17 @@ app.put('/api/persons/:id', (request, response, next) => {
     name: body.name,
     number: body.number,
   }
+
   // new:true cause event handler to be called with new modification
   // runValidators turns them on for the update operation
   const opts = {new: true, runValidators: true}
-  Person.findByIdAndUpdate(request.params.id, person, opts)
+  Person
+    .findByIdAndUpdate(request.params.id, person, opts)
     .then(updatedPerson => {
       response.json(updatedPerson)
     })
     .catch(error => next(error))
 })
-
 
 const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
