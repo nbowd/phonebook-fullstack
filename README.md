@@ -1,5 +1,7 @@
 Try the app here: https://agile-falls-64774.herokuapp.com/
 
+Users can add new contacts, create new entries, search for a specific entry, or update an existing contact.
+
 Backend handling for a phonebook CRUD application built with React.js, Express, and Node.js while storing data using MongoDB.
 
 Uses 'morgan' package to for request logging.

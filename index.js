@@ -59,9 +59,7 @@ app.get('/api/info', (request, response) => {
 app.delete('/api/persons/:id', (request, response, next) => {
   Person
     .findByIdAndRemove(request.params.id)
-    .then(result => {
-      response.status(204).end()
-    })
+    .then(result => response.status(204).end())
     .catch(error => next(error))
 })
 
@@ -79,9 +77,7 @@ app.post('/api/persons', (request, response) => {
 
   person
     .save()
-    .then(savedPerson => {
-    response.json(savedPerson.toJSON())
-    })
+    .then(savedPerson => response.json(savedPerson.toJSON()))
     .catch(error => next(error))
 })
 
@@ -99,15 +95,11 @@ app.put('/api/persons/:id', (request, response, next) => {
   const opts = {new: true, runValidators: true}
   Person
     .findByIdAndUpdate(request.params.id, person, opts)
-    .then(updatedPerson => {
-      response.json(updatedPerson)
-    })
+    .then(updatedPerson => response.json(updatedPerson))
     .catch(error => next(error))
 })
 
-const unknownEndpoint = (request, response) => {
-  response.status(404).send({ error: 'unknown endpoint' })
-}
+const unknownEndpoint = (request, response) => response.status(404).send({ error: 'unknown endpoint' })
 
 app.use(unknownEndpoint)
 
