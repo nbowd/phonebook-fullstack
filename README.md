@@ -1,7 +1,13 @@
 Work in progress Try the app here: https://agile-falls-64774.herokuapp.com/
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Users can add new contacts, create new entries, search for a specific entry, or update an existing contact.
+=======
+Users can add new contacts, create new entries, search for a specific entry, or update an existing contact.
+
+Backend handling for a phonebook CRUD application built with React.js, Express, and Node.js while storing data using MongoDB.
+>>>>>>> b5b7ebb249b80e10651c8430b00ca8e9da225631
 
 Backend handling for a phonebook CRUD application built with React.js, Express, and Node.js while storing data using MongoDB.
 =======
