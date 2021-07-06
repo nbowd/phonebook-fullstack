@@ -22,7 +22,7 @@ app.use(
   ),
 )
 
-// Used to save a copy of persons for /api/info
+// Used to save a copy of persons for /api/info.
 let personList = null;
 
 // GET All Persons
