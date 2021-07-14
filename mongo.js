@@ -20,7 +20,7 @@ db.once('open', function() {
   // we're connected!
   const personSchema = new mongoose.Schema({
     name: String,
-    number: Number,
+    number: String,
     id: Number,
   })
   // const Person = mongoose.model('Person', personSchema)

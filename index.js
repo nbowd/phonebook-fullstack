@@ -72,7 +72,7 @@ app.post('/api/persons', (request, response) => {
 
   const person = new Person({
     name: body.name,
-    number: Number(body.number)
+    number: String(body.number)
   })
 
   person
@@ -84,10 +84,10 @@ app.post('/api/persons', (request, response) => {
 // PUT: Updates the number of an existing entry
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
-
+  console.log(body);
   const person = {
     name: body.name,
-    number: body.number,
+    number: String(body.number),
   }
 
   // new:true cause event handler to be called with new modification
